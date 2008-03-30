@@ -11,4 +11,6 @@
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed
 
+tekKonfig\tekKonfig.xml
+
 Blipstick.lua

@@ -1,9 +1,12 @@
 
 local path = "Interface\\AddOns\\Blipstick\\"
 local textures = {
-	["Small questgivers"] = path.."SmallExclaim",
+	["Default"] = "Interface\\Minimap\\ObjectIcons",
+	["SmallExclaim"] = path.."SmallExclaim",
+	["LittleExclaim"] = path.."LittleExclaim",
 	["Nandini black"] = path.."Nandini-black",
 	["Nandini original"] = path.."Nandini",
+	["AlternateBlips"] = path.."AlternateBlips",
 }
 
 Minimap:SetBlipTexture("Interface\\AddOns\\Blipstick\\SmallExclaim")

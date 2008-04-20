@@ -12,7 +12,7 @@ Minimap:SetBlipTexture("Interface\\AddOns\\Blipstick\\SmallExclaim")
 --      Locals      --
 ----------------------
 
-local GAP, EDGEGAP = 8, 16
+local GAP, EDGEGAP, ROWHEIGHT = 8, 16, 43
 
 
 ---------------------
@@ -25,23 +25,43 @@ frame:Hide()
 frame:SetScript("OnShow", function(frame)
 	local title, subtitle = LibStub("tekKonfig-Heading").new(frame, "Blipstick", "These settings let you select a different set of minimap blips to use.")
 
-	local anchor = subtitle
+	local anchor, rows = subtitle, {}
+	local function OnClick(self)
+		Minimap:SetBlipTexture(self.texture)
+		for _,row in pairs(rows) do row:SetChecked(row == self) end
+	end
 	for _,name in ipairs(textures) do
 		local texture = name == "Default" and "Interface\\Minimap\\ObjectIcons" or path..name
 
-		local demo = frame:CreateTexture()
-		demo:SetPoint("TOP", anchor, "BOTTOM", 0, -GAP)
-		demo:SetPoint("LEFT", frame, "LEFT", EDGEGAP, 0)
-		demo:SetPoint("RIGHT", frame, "CENTER", -GAP/2, 0)
-		demo:SetHeight(64*demo:GetWidth()/256)
-		demo:SetTexture(texture)
+		local row = CreateFrame("CheckButton", nil, frame)
+		row:SetHeight(ROWHEIGHT)
+		row:SetPoint("TOP", anchor, "BOTTOM", 0, -GAP)
+		row:SetPoint("LEFT", frame, "LEFT", EDGEGAP, 0)
+		row:SetPoint("RIGHT", frame, "RIGHT", -EDGEGAP, 0)
 
-		local text = frame:CreateFontString(nil, nil, "GameFontHighlight")
-		text:SetPoint("LEFT", demo, "RIGHT", GAP, 0)
-		text:SetPoint("RIGHT", frame, "RIGHT", -EDGEGAP, 0)
+		row.texture = texture
+		row:SetScript("OnClick", OnClick)
+
+		local highlight = row:CreateTexture()
+		highlight:SetTexture("Interface\\HelpFrame\\HelpFrameButton-Highlight")
+		highlight:SetTexCoord(0, 1, 0, 0.578125)
+		highlight:SetAllPoints()
+		row:SetHighlightTexture(highlight)
+		row:SetCheckedTexture(highlight)
+
+		local preview = row:CreateTexture()
+		preview:SetPoint("TOPLEFT", row)
+		preview:SetPoint("RIGHT", row, "CENTER", -GAP/2, 0)
+		preview:SetPoint("BOTTOM", row)
+		preview:SetTexture(texture)
+
+		local text = row:CreateFontString(nil, nil, "GameFontHighlight")
+		text:SetPoint("LEFT", preview, "RIGHT", GAP, 0)
+		text:SetPoint("RIGHT", row)
 		text:SetText(name)
 
-		anchor = demo
+		table.insert(rows, row)
+		anchor = row
 	end
 
 	frame:SetScript("OnShow", nil)

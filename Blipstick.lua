@@ -1,13 +1,6 @@
 
 local path = "Interface\\AddOns\\Blipstick\\"
-local textures = {
-	["Default"] = "Interface\\Minimap\\ObjectIcons",
-	["SmallExclaim"] = path.."SmallExclaim",
-	["LittleExclaim"] = path.."LittleExclaim",
-	["Nandini black"] = path.."Nandini-black",
-	["Nandini original"] = path.."Nandini",
-	["AlternateBlips"] = path.."AlternateBlips",
-}
+local textures = {"Default", "SmallExclaim", "LittleExclaim", "Nandini", "Nandini-black", "AlternateBlips"}
 
 Minimap:SetBlipTexture("Interface\\AddOns\\Blipstick\\SmallExclaim")
 
@@ -33,7 +26,9 @@ frame:SetScript("OnShow", function(frame)
 	local title, subtitle = LibStub("tekKonfig-Heading").new(frame, "Blipstick", "These settings let you select a different set of minimap blips to use.")
 
 	local anchor = subtitle
-	for name,texture in pairs(textures) do
+	for _,name in ipairs(textures) do
+		local texture = name == "Default" and "Interface\\Minimap\\ObjectIcons" or path..name
+
 		local demo = frame:CreateTexture()
 		demo:SetPoint("TOP", anchor, "BOTTOM", 0, -GAP)
 		demo:SetPoint("LEFT", frame, "LEFT", EDGEGAP, 0)

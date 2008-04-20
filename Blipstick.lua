@@ -1,25 +1,37 @@
 
-local path = "Interface\\AddOns\\Blipstick\\"
-local textures = {"Default", "SmallExclaim", "LittleExclaim", "Nandini", "Nandini-black", "AlternateBlips"}
-
-Minimap:SetBlipTexture("Interface\\AddOns\\Blipstick\\SmallExclaim")
-
-
-
-
-
 ----------------------
 --      Locals      --
 ----------------------
 
 local GAP, EDGEGAP, ROWHEIGHT = 8, 16, 43
+local DEFAULTPATH = "Interface\\Minimap\\ObjectIcons"
+
+local path = "Interface\\AddOns\\Blipstick\\"
+local textures = {"Default", "SmallExclaim", "LittleExclaim", "Nandini", "Nandini-black", "AlternateBlips"}
 
 
----------------------
---      Panel      --
----------------------
+------------------------------
+--      Initialization      --
+------------------------------
 
 local frame = CreateFrame("Frame", nil, UIParent)
+frame:RegisterEvent("ADDON_LOADED")
+frame:SetScript("OnEvent", function (self, event, addon)
+	if addon ~= "Blipstick" then return end
+
+	BlipStickDB = BlipStickDB or {texture = "SmallExclaim"}
+	self.db = BlipStickDB
+	Minimap:SetBlipTexture(self.db.texture == "Default" and DEFAULTPATH or path..self.db.texture)
+
+	self:UnregisterEvent("ADDON_LOADED")
+	f:SetScript("OnEvent", nil)
+end)
+
+
+----------------------------
+--      Config Panel      --
+----------------------------
+
 frame.name = "Blipstick"
 frame:Hide()
 frame:SetScript("OnShow", function(frame)
@@ -27,11 +39,12 @@ frame:SetScript("OnShow", function(frame)
 
 	local anchor, rows = subtitle, {}
 	local function OnClick(self)
+		frame.db.texture = self.texture
 		Minimap:SetBlipTexture(self.texture)
 		for _,row in pairs(rows) do row:SetChecked(row == self) end
 	end
 	for _,name in ipairs(textures) do
-		local texture = name == "Default" and "Interface\\Minimap\\ObjectIcons" or path..name
+		local texture = name == "Default" and DEFAULTPATH or path..name
 
 		local row = CreateFrame("CheckButton", nil, frame)
 		row:SetHeight(ROWHEIGHT)
@@ -39,6 +52,7 @@ frame:SetScript("OnShow", function(frame)
 		row:SetPoint("LEFT", frame, "LEFT", EDGEGAP, 0)
 		row:SetPoint("RIGHT", frame, "RIGHT", -EDGEGAP, 0)
 
+		row:SetChecked(name == frame.db.texture)
 		row.texture = texture
 		row:SetScript("OnClick", OnClick)
 

@@ -24,7 +24,7 @@ frame:SetScript("OnEvent", function (self, event, addon)
 	Minimap:SetBlipTexture(self.db.texture == "Default" and DEFAULTPATH or path..self.db.texture)
 
 	self:UnregisterEvent("ADDON_LOADED")
-	f:SetScript("OnEvent", nil)
+	self:SetScript("OnEvent", nil)
 end)
 
 

@@ -19,9 +19,9 @@ frame:RegisterEvent("ADDON_LOADED")
 frame:SetScript("OnEvent", function (self, event, addon)
 	if addon ~= "Blipstick" then return end
 
-	BlipStickDB = BlipStickDB or {texture = "SmallExclaim"}
+	BlipStickDB = BlipStickDB or {texture = path.."SmallExclaim"}
 	self.db = BlipStickDB
-	Minimap:SetBlipTexture(self.db.texture == "Default" and DEFAULTPATH or path..self.db.texture)
+	Minimap:SetBlipTexture(self.db.texture)
 
 	self:UnregisterEvent("ADDON_LOADED")
 	self:SetScript("OnEvent", nil)
@@ -52,7 +52,7 @@ frame:SetScript("OnShow", function(frame)
 		row:SetPoint("LEFT", frame, "LEFT", EDGEGAP, 0)
 		row:SetPoint("RIGHT", frame, "RIGHT", -EDGEGAP, 0)
 
-		row:SetChecked(name == frame.db.texture)
+		row:SetChecked(texture == frame.db.texture)
 		row.texture = texture
 		row:SetScript("OnClick", OnClick)
 

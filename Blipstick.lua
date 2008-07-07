@@ -85,3 +85,14 @@ InterfaceOptions_AddCategory(frame)
 
 
 LibStub("tekKonfig-AboutPanel").new("Blipstick", "Blipstick")
+
+
+----------------------------------------
+--      Quicklaunch registration      --
+----------------------------------------
+
+LibStub:GetLibrary("LibDataBroker-1.1"):NewDataObject("Blipstick", {
+	launcher = true,
+	icon = "Interface\\AddOns\\Blipstick\\icon",
+	OnClick = function() InterfaceOptionsFrame_OpenToFrame(frame) end,
+})

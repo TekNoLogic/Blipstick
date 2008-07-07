@@ -14,5 +14,7 @@
 ## X-LoadOn-Always: delayed
 
 tekKonfig\tekKonfig.xml
+CallbackHandler-1.0.lua
+LibDataBroker-1.1\LibDataBroker-1.1
 
 Blipstick.lua

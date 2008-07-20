@@ -92,7 +92,7 @@ LibStub("tekKonfig-AboutPanel").new("Blipstick", "Blipstick")
 ----------------------------------------
 
 LibStub:GetLibrary("LibDataBroker-1.1"):NewDataObject("Blipstick", {
-	launcher = true,
+	type = "launcher",
 	icon = "Interface\\AddOns\\Blipstick\\icon",
 	OnClick = function() InterfaceOptionsFrame_OpenToFrame(frame) end,
 })

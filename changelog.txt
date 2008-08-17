@@ -1,3 +1,6 @@
+3.0.1.3-Release
+    Add LDB quicklaunch button
+
 2.4.1.2-Beta
     Fix blip texture not applying correctly after reload
 

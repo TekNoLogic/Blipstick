@@ -1,0 +1,6 @@
+2.4.1.2-Beta
+    Fix blip texture not applying correctly after reload
+
+2.4.1.1-Alpha
+    And so it begins...
+

@@ -7,7 +7,7 @@ local GAP, EDGEGAP, ROWHEIGHT = 8, 16, 43
 local DEFAULTPATH = "Interface\\Minimap\\ObjectIcons"
 
 local path = "Interface\\AddOns\\Blipstick\\"
-local textures = {"Default", "SmallExclaim", "LittleExclaim", "Nandini", "Nandini-black", "AlternateBlips"}
+local textures = {"Default", "SmallExclaim", "LittleExclaim", "Nandini", "Nandini-black", "AlternateBlips", "HunterZSmall"}
 
 
 ------------------------------

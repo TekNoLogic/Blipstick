@@ -1,3 +1,9 @@
+3.0.1.4-Release
+    Fuck you, and your submodules
+    About panel embed update
+    Remove placehold icons in Nandini
+    New texture HunterZSmall
+
 3.0.1.3-Release
     Add LDB quicklaunch button
 

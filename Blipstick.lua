@@ -3,7 +3,6 @@
 --      Locals      --
 ----------------------
 
-local GAP, EDGEGAP, ROWHEIGHT = 8, 16, 43
 local DEFAULTPATH = "Interface\\Minimap\\ObjectIcons"
 
 local path = "Interface\\AddOns\\Blipstick\\"
@@ -35,6 +34,9 @@ end)
 frame.name = "Blipstick"
 frame:Hide()
 frame:SetScript("OnShow", function(frame)
+	local GAP, EDGEGAP = 8, 16
+	local ROWHEIGHT = (408-73-EDGEGAP) / #textures - GAP
+
 	local title, subtitle = LibStub("tekKonfig-Heading").new(frame, "Blipstick", "These settings let you select a different set of minimap blips to use.")
 
 	local anchor, rows = subtitle, {}
@@ -64,8 +66,8 @@ frame:SetScript("OnShow", function(frame)
 		row:SetCheckedTexture(highlight)
 
 		local preview = row:CreateTexture()
+		preview:SetWidth(ROWHEIGHT*4) -- Maintain proper aspect
 		preview:SetPoint("TOPLEFT", row)
-		preview:SetPoint("RIGHT", row, "CENTER", -GAP/2, 0)
 		preview:SetPoint("BOTTOM", row)
 		preview:SetTexture(texture)
 

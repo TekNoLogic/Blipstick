@@ -1,3 +1,7 @@
+3.0.1.5-Release
+    Fix config panel to automatically adjust row size
+    Fix LDB not loading
+
 3.0.1.4-Release
     Fuck you, and your submodules
     About panel embed update

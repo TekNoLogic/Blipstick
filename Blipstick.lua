@@ -1,3 +1,4 @@
+if not IS_WRATH_BUILD then InterfaceOptionsFrame_OpenToCategory = InterfaceOptionsFrame_OpenToFrame end
 
 ----------------------
 --      Locals      --
@@ -13,7 +14,7 @@ local textures = {"Default", "SmallExclaim", "LittleExclaim", "Nandini", "Nandin
 --      Initialization      --
 ------------------------------
 
-local frame = CreateFrame("Frame", nil, UIParent)
+local frame = CreateFrame("Frame", nil, InterfaceOptionsFramePanelContainer)
 frame:RegisterEvent("ADDON_LOADED")
 frame:SetScript("OnEvent", function (self, event, addon)
 	if addon ~= "Blipstick" then return end
@@ -96,5 +97,5 @@ LibStub("tekKonfig-AboutPanel").new("Blipstick", "Blipstick")
 LibStub:GetLibrary("LibDataBroker-1.1"):NewDataObject("Blipstick", {
 	type = "launcher",
 	icon = "Interface\\AddOns\\Blipstick\\icon",
-	OnClick = function() InterfaceOptionsFrame_OpenToFrame(frame) end,
+	OnClick = function() InterfaceOptionsFrame_OpenToCategory(frame) end,
 })

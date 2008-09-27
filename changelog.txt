@@ -1,3 +1,7 @@
+3.0.1.6-Release
+    Update for wrath build 8962 config panel breakage
+    Embed update
+
 3.0.1.5-Release
     Fix config panel to automatically adjust row size
     Fix LDB not loading

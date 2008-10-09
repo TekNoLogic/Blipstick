@@ -1,3 +1,6 @@
+3.0.2.7-Release
+    Forgot wrath check
+
 3.0.1.6-Release
     Update for wrath build 8962 config panel breakage
     Embed update

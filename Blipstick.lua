@@ -6,7 +6,7 @@
 local DEFAULTPATH = "Interface\\Minimap\\ObjectIcons"
 
 local path = "Interface\\AddOns\\Blipstick\\"
-local textures = {"Default", "SmallExclaim", "LittleExclaim", "Nandini", "Nandini-black", "AlternateBlips", "HunterZSmall"}
+local textures = {"Default", "SmallExclaim", "LittleExclaim", "Nandini", "Nandini-black", "AlternateBlips", "HunterZSmall", "Charmed"}
 
 
 ------------------------------

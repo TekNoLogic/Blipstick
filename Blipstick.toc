@@ -1,4 +1,4 @@
-## Interface: 30000
+## Interface: 40000
 
 ## Title: Blipstick
 ## Notes: Better minimap blips

@@ -34,7 +34,7 @@ end)
 frame.name = "Blipstick"
 frame:Hide()
 frame:SetScript("OnShow", function(frame)
-	local GAP, EDGEGAP, TEXTHEIGHT, TEXTOFFSET, HIGHLIGHTOFFSET = 8, 16, 13, 5, 8
+	local GAP, EDGEGAP, TEXTHEIGHT, TEXTOFFSET = 8, 16, 13, 5
 	local ROWHEIGHT = (408-73-EDGEGAP) / (#textures/2) - GAP
 
 	local title, subtitle = LibStub("tekKonfig-Heading").new(frame, "Blipstick", "These settings let you select a different set of minimap blips to use.")
@@ -65,8 +65,8 @@ frame:SetScript("OnShow", function(frame)
 		row:SetScript("OnClick", OnClick)
 
 		local highlight = row:CreateTexture()
-		highlight:SetTexture("Interface\\HelpFrame\\HelpFrameButton-Highlight")
-		highlight:SetTexCoord(0, 1, 0, 0.578125)
+		highlight:SetTexture("Interface\\QuestFrame\\UI-QuestLogTitleHighlight")
+		highlight:SetVertexColor(.196, .388, .8, 0.75)
 		row:SetHighlightTexture(highlight)
 		row:SetCheckedTexture(highlight)
 
@@ -80,9 +80,9 @@ frame:SetScript("OnShow", function(frame)
 		text:SetPoint("TOP", preview, "BOTTOM")
 		text:SetText(name)
 
-		highlight:SetPoint("TOPLEFT", preview, -HIGHLIGHTOFFSET, HIGHLIGHTOFFSET)
-		highlight:SetPoint("RIGHT", preview, HIGHLIGHTOFFSET, 0)
-		highlight:SetPoint("BOTTOM", text, 0, -TEXTOFFSET - HIGHLIGHTOFFSET)
+		highlight:SetPoint("TOPLEFT", preview, 0, TEXTOFFSET)
+		highlight:SetPoint("RIGHT", preview, 0, 0)
+		highlight:SetPoint("BOTTOM", text, 0, -TEXTOFFSET)
 
 		table.insert(rows, row)
 		anchor = not leftside and row or anchor

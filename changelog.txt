@@ -1,3 +1,8 @@
+4.0.0.9-Release
+    Add the new 4.0 blips to the existing sets
+    Fix config layout for new bigger blip textures
+    Much less shitty selection highlight
+
 3.0.3.8-Release
     New blip set: Charmed
     Remove 2.4.3 compat

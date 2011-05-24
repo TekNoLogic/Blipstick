@@ -13,6 +13,8 @@ local textures = {"Default", "SmallExclaim", "LittleExclaim", "Nandini", "Nandin
 --      Initialization      --
 ------------------------------
 
+if AddonLoader and AddonLoader.RemoveInterfaceOptions then AddonLoader:RemoveInterfaceOptions("Blipstick") end
+
 local frame = CreateFrame("Frame", nil, InterfaceOptionsFramePanelContainer)
 frame:RegisterEvent("ADDON_LOADED")
 frame:SetScript("OnEvent", function (self, event, addon)

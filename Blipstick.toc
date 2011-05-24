@@ -7,11 +7,13 @@
 ## X-Website: http://www.tekkub.net/
 ## X-Email: tekkub-wow@googlegroups.com
 ## X-Category: Map
+## X-Icon: Interface\Icons\Spell_Shadow_SoothingKiss
 
 ## SavedVariables: BlipStickDB
 
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed
+## X-LoadOn-InterfaceOptions: Blipstick
 
 tekKonfig\tekKonfig.xml
 CallbackHandler-1.0.lua

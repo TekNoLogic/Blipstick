@@ -77,6 +77,7 @@ frame:SetScript("OnShow", function(frame)
 		preview:SetPoint("TOP", row)
 		preview:SetPoint("BOTTOM", row, 0, TEXTHEIGHT + TEXTOFFSET)
 		preview:SetTexture(texture)
+		preview:SetTexCoord(0, 1, 0, 0.5)
 
 		local text = row:CreateFontString(nil, nil, "GameFontHighlight")
 		text:SetPoint("TOP", preview, "BOTTOM")

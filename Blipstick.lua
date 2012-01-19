@@ -36,8 +36,8 @@ end)
 frame.name = "Blipstick"
 frame:Hide()
 frame:SetScript("OnShow", function(frame)
-	local GAP, EDGEGAP, TEXTHEIGHT, TEXTOFFSET = 8, 16, 13, 5
-	local ROWHEIGHT = (408-73-EDGEGAP) / (#textures/2) - GAP
+	local GAP, EDGEGAP, TEXTHEIGHT, TEXTOFFSET = 8, 6, 13, 5
+	local ROWHEIGHT = (508-73-EDGEGAP) / (#textures/2) - GAP
 
 	local title, subtitle = LibStub("tekKonfig-Heading").new(frame, "Blipstick", "These settings let you select a different set of minimap blips to use.")
 

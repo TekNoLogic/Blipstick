@@ -36,7 +36,7 @@ end)
 frame.name = "Blipstick"
 frame:Hide()
 frame:SetScript("OnShow", function(frame)
-	local GAP, EDGEGAP, TEXTHEIGHT, TEXTOFFSET = 8, 16, 13, 5
+	local GAP, EDGEGAP, TEXTHEIGHT, TEXTOFFSET = 16, 16, 13, 5
 	local ROWHEIGHT = (508-73-EDGEGAP) / (#textures/3) - GAP
 	local COLWIDTH = (623-EDGEGAP*2-GAP*2) / 3
 
@@ -73,8 +73,8 @@ frame:SetScript("OnShow", function(frame)
 		row:SetCheckedTexture(highlight)
 
 		local preview = row:CreateTexture()
-		preview:SetWidth((ROWHEIGHT - TEXTHEIGHT - TEXTOFFSET)*8/7) -- Maintain proper aspect
-		preview:SetPoint("TOP", row)
+		preview:SetWidth(COLWIDTH) -- Maintain proper aspect
+		preview:SetHeight(COLWIDTH*3/8 + TEXTHEIGHT + TEXTOFFSET) -- Maintain proper aspect
 		preview:SetPoint("BOTTOM", row, 0, TEXTHEIGHT + TEXTOFFSET)
 		preview:SetTexture(texture)
 		preview:SetTexCoord(0, 1, 0, 0.5)

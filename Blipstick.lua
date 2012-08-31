@@ -37,29 +37,29 @@ frame.name = "Blipstick"
 frame:Hide()
 frame:SetScript("OnShow", function(frame)
 	local GAP, EDGEGAP, TEXTHEIGHT, TEXTOFFSET = 8, 16, 13, 5
-	local ROWHEIGHT = (408-73-EDGEGAP) / (#textures/2) - GAP
+	local ROWHEIGHT = (408-73-EDGEGAP) / (#textures/3) - GAP
+	local COLWIDTH = (623-EDGEGAP*2-GAP*2) / 3
 
 	local title, subtitle = LibStub("tekKonfig-Heading").new(frame, "Blipstick", "These settings let you select a different set of minimap blips to use.")
 
-	local anchor, rows = subtitle, {}
+	local anchor, rows, lastcol = subtitle, {}
 	local function OnClick(self)
 		frame.db.texture = self.texture
 		Minimap:SetBlipTexture(self.texture)
 		for _,row in pairs(rows) do row:SetChecked(row == self) end
 	end
 	for i,name in ipairs(textures) do
-		local leftside = ((i % 2) == 1)
+		local newrow = ((i % 3) == 1)
 		local texture = name == "Default" and DEFAULTPATH or path..name
 
 		local row = CreateFrame("CheckButton", nil, frame)
 		row:SetHeight(ROWHEIGHT)
-		row:SetPoint("TOP", anchor, "BOTTOM", 0, -GAP)
-		if leftside then
+		row:SetWidth(COLWIDTH)
+		if newrow then
+			row:SetPoint("TOP", anchor, "BOTTOM", 0, -GAP)
 			row:SetPoint("LEFT", frame, "LEFT", EDGEGAP, 0)
-			row:SetPoint("RIGHT", frame, "CENTER")
 		else
-			row:SetPoint("LEFT", frame, "CENTER")
-			row:SetPoint("RIGHT", frame, "RIGHT", -EDGEGAP, 0)
+			row:SetPoint("TOPLEFT", lastcol, "TOPRIGHT", GAP, 0)
 		end
 
 		row:SetChecked(texture == frame.db.texture)
@@ -73,7 +73,7 @@ frame:SetScript("OnShow", function(frame)
 		row:SetCheckedTexture(highlight)
 
 		local preview = row:CreateTexture()
-		preview:SetWidth((ROWHEIGHT - TEXTHEIGHT - TEXTOFFSET)*2) -- Maintain proper aspect
+		preview:SetWidth((ROWHEIGHT - TEXTHEIGHT - TEXTOFFSET)*8/7) -- Maintain proper aspect
 		preview:SetPoint("TOP", row)
 		preview:SetPoint("BOTTOM", row, 0, TEXTHEIGHT + TEXTOFFSET)
 		preview:SetTexture(texture)
@@ -87,7 +87,8 @@ frame:SetScript("OnShow", function(frame)
 		highlight:SetPoint("BOTTOM", text, 0, -TEXTOFFSET)
 
 		table.insert(rows, row)
-		anchor = not leftside and row or anchor
+		anchor = not newrow and row or anchor
+		lastcol = row
 	end
 
 	frame:SetScript("OnShow", nil)

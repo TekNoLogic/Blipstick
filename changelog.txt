@@ -1,3 +1,10 @@
+5.0.1.10-Beta
+    Update for PANDAS!
+    Rejigger config layout for bigger panel
+    Make the preview blips bigger
+    Add the new 4.3 blips to the existing sets (Thanks Ethan Centaurai)
+    Add support for AddonLoader's LoadOn-InterfaceOptions thingy
+
 4.0.0.9-Release
     Add the new 4.0 blips to the existing sets
     Fix config layout for new bigger blip textures

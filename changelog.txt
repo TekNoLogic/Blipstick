@@ -1,3 +1,6 @@
+5.0.1.11-Beta
+    New 5.0.4 blips (thanks Ethan Centaurai)
+
 5.0.1.10-Beta
     Update for PANDAS!
     Rejigger config layout for bigger panel

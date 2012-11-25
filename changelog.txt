@@ -1,3 +1,6 @@
+5.0.1.12-Release
+    Tagging release version
+
 5.0.1.11-Beta
     New 5.0.4 blips (thanks Ethan Centaurai)
 
